@@ -1,0 +1,17 @@
+{
+  "name": "Snake3D",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.1",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "threejs": "latest",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "angular-resource": "latest",
+    "html5-boilerplate": "~4.3.0",
+    "bootstrap": "~3.2.0",
+    "requirejs": "latest"
+  }
+}
