@@ -1,7 +1,6 @@
 var tests = [];
 for (var file in window.__karma__.files) {
     if (/Spec\.js$/.test(file)) {
-        console.log("testing file... " + file);
         tests.push(file);
     }
 }
@@ -11,14 +10,14 @@ requirejs.config({
     baseUrl: '/base/src/js',
 
     paths: {
-        'jquery': '../lib/jquery',
-        'underscore': '../lib/underscore',
+        'THREE':                  '../../lib/three.min',
+        'THREE.TrackballControls':'../../lib/TrackballControls',
     },
 
-    shim: {
-        'underscore': {
-            exports: '_'
-        }
+    shim:{
+        'THREE.TrackballControls':{
+            deps: ['THREE'],
+        },
     },
 
     // ask Require.js to load these files (all our tests)
