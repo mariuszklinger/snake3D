@@ -1,5 +1,21 @@
+require.config({
+
+    baseUrl: 'js',
+
+    paths: {
+        'THREE':                  '../../bower_components/threejs/build/three.min',
+        'THREE.TrackballControls':'../../lib/TrackballControls',
+    },
+
+    shim:{
+        'THREE.TrackballControls':{
+            deps: ['THREE'],
+        },
+    },
+});
+
 // Start the main app logic.
-requirejs(['core/Engine', 'THREE.TrackballControls'],
+define(['core/Engine', 'THREE.TrackballControls'],
 function (E) {
 
     console.log('Engine loaded!');
