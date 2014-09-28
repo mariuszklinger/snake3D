@@ -1,9 +1,29 @@
-define(['THREE'], function(){
+'use strict';
 
-    var Engine = function(){};
+define(['core/Grid', 'core/Snake'], function(Grid, Snake){
+
+    function Engine(){
+        this.grid = new Grid();
+    };
 
     Engine.prototype = {
-        x: 666,
+
+        addSnake: function(snake){
+            //TODO: choose not-taken location for new snake
+            return [1,1,1];
+        },
+        
+        moveLeft: function(){
+        },
+
+        moveRight: function(){
+        },
+        
+        moveUp: function(){
+        },
+    
+        moveDown: function(){
+        },
     }
 
     return Engine;
