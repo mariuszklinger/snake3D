@@ -13,16 +13,16 @@ define(['core/Grid', 'core/Snake'], function(Grid, Snake){
             return [1,1,1];
         },
         
-        moveLeft: function(){
+        moveLeft: function(snakeID){
         },
 
-        moveRight: function(){
+        moveRight: function(snakeID){
         },
         
-        moveUp: function(){
+        moveUp: function(snakeID){
         },
     
-        moveDown: function(){
+        moveDown: function(snakeID){
         },
     }
 

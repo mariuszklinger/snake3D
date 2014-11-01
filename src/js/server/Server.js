@@ -6,7 +6,8 @@ define(['core/Engine', 'core/Snake'], function(Engine, Snake){
     };
 
     Server.prototype = {
-        x: 777,
+        onConnection: function(){
+        },
     }
 
     return Server;
