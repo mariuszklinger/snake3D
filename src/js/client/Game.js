@@ -19,6 +19,8 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
 
         init: function(){
 
+            var self = this;
+
             var renderer = new THREE.WebGLRenderer();
             renderer.setSize( 1450, 800 );
             renderer.setClearColor( 0xCCCCCC, 1);
@@ -39,7 +41,7 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
             this.renderer = renderer;   
 
             var scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2( 0xcccccc, 0.01 );
+            //scene.fog = new THREE.FogExp2( 0xcccccc, 0.01 );
 
             this.scene = scene;
 
@@ -47,24 +49,24 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
             var material = new THREE.MeshLambertMaterial( { color: 0xBDB9AF } );
             var mesh;
 
-            for (var i = 175; i >= 0; i--) {
+            for (var i = 1; i >= 0; i--) {
                 mesh = new THREE.Mesh( geometry, material );
                 mesh.position.x = -50 + Math.random() * 100;
                 mesh.position.y = -50 + Math.random() * 100;
                 mesh.position.z = -50 + Math.random() * 100;
                 scene.add( mesh );
             };
-
-            var material = new THREE.LineBasicMaterial({
-                color: 0xFFCD23
-            });
-
-            var geometry = new THREE.Geometry();
-            //geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
-            //geometry.vertices.push(new THREE.Vector3(300, 0, 0));
-
-            var line = new THREE.Line( geometry, material );
-            scene.add( line );
+            
+            var createMesh = function(){
+                var mesh = new THREE.Mesh( geometry, material );
+                var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } );
+                mesh.position.x = -50 + Math.random() * 100;
+                mesh.position.y = -50 + Math.random() * 100;
+                mesh.position.z = -50 + Math.random() * 100;
+                scene.add( mesh );
+                self.render.call(self);
+            }
+            setInterval(createMesh, 1000);
 
             var light = new THREE.DirectionalLight( 0xffffff );
             light.position.set( 1, 1, 1 );
@@ -91,15 +93,21 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
             controls.dynamicDampingFactor = 0.3;
 
             controls.keys = [ 65, 83, 68 ];
-            
-            var self = this;
-            controls.addEventListener('change', function(){self.render.call(self)});
+
+            controls.addEventListener('change', function(){
+                self.render.call(self);
+            });
 
             this.controls = controls;
         },
 
         render: function(){
             this.renderer.render(this.scene, this.camera);
+        },
+
+        animate: function(){
+            requestAnimationFrame(this.animate);
+            this.render();
         },
         
     };

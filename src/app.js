@@ -20,20 +20,5 @@ require.config({
 define(['client/Game'], function (Game) {
 
     var g = new Game();
-    g.render();
-
-    function animate() {
-        requestAnimationFrame(animate);
-        g.controls.update();
-    }
-
-    var ctx = this;
-    function render() {
-        g.renderer.render(g.scene, g.camera);
-    }
-
-    animate();
-
-    console.log('Engine loaded!');
-
+    g.animate();
 });
