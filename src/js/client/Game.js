@@ -64,7 +64,6 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
                 mesh.position.y = -50 + Math.random() * 100;
                 mesh.position.z = -50 + Math.random() * 100;
                 scene.add( mesh );
-                self.render.call(self);
             }
             setInterval(createMesh, 1000);
 
@@ -106,8 +105,16 @@ define(['core/Engine', 'core/Snake', 'core/SETTINGS', 'THREE.TrackballControls']
         },
 
         animate: function(){
-            requestAnimationFrame(this.animate);
-            this.render();
+            
+            var self = this;
+
+            var _animate = function(){
+                requestAnimationFrame(_animate);
+                self.controls.update();
+                self.render();
+            }
+
+            _animate();
         },
         
     };
