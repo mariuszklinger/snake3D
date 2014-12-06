@@ -5,8 +5,9 @@ require.config({
     baseUrl: 'js',
 
     paths: {
-        'THREE':                  '/bower_components/threejs/build/three.min',
-        'THREE.TrackballControls':'/lib/TrackballControls',
+        'THREE':                    '/bower_components/threejs/build/three.min',
+        'THREE.TrackballControls':  '/lib/TrackballControls',
+        'underscore':               '/node_modules/underscore/underscore',
     },
 
     shim:{
