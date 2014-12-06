@@ -1,9 +1,10 @@
 'use strict';
 
-define(['core/Grid', 'core/Snake'], function(Grid, Snake){
+define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid, Snake){
 
     function Engine(){
         this.grid = new Grid();
+        this.vgrid = new VGrid();
     };
 
     Engine.prototype = {
