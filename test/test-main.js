@@ -16,7 +16,7 @@ requirejs.config({
     paths: {
         'THREE':                    '../../lib/three.min',
         'THREE.TrackballControls':  '../../lib/TrackballControls',
-        'underscore':               '../../../bower_components/underscore/underscore',
+        'underscore':               '../../bower_components/underscore/underscore',
     },
 
     shim:{
