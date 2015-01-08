@@ -65,24 +65,6 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
                 return controls;
             })(this);
 
-            // --- D E M O ---
-            var cube_s = SETTINGS.CUBE_SIZE;
-            var geometry = new THREE.BoxGeometry(cube_s, cube_s, cube_s);
-            var material = new THREE.MeshLambertMaterial({color: 0xBDB9AF});
-            var mesh;
-            var self = this;
-
-            var createMesh = function(){
-                var mesh = new THREE.Mesh(geometry, material );
-                var material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff});
-                mesh.position.x = -50 + Math.random() * 100;
-                mesh.position.y = -50 + Math.random() * 100;
-                mesh.position.z = -50 + Math.random() * 100;
-                self.scene.add( mesh );
-            }
-
-            // _.times(50, createMesh);
-            // --- CUT HERE ---
         },
 
         addGrid: function(vector){
@@ -91,7 +73,6 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
                 color: 0x000000
             });
 
-
             var X = SETTINGS.GRID_DIMENSIONS[0],
                 Y = SETTINGS.GRID_DIMENSIONS[1],
                 Z = SETTINGS.GRID_DIMENSIONS[2];
@@ -99,9 +80,9 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
             var geometry, line;
 
-            for(var x = 0; x <= X; x++){
-                for(var y = 0; y <= Y; y++){
-                    for(var z = 0; z <= Z; z++){
+            for(var x = 0; x <= X; x += 2){
+                for(var y = 0; y <= Y; y += 2){
+                    for(var z = 0; z <= Z; z += 2){
 
                         geometry = new THREE.Geometry();
                         geometry.vertices.push(new THREE.Vector3(cs * x, cs * y, 0));
