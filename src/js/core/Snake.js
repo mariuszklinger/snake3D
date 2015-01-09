@@ -7,18 +7,30 @@ define(['core/SETTINGS'], function(SETTINGS){
         var cs = SETTINGS.CUBE_SIZE;
 
         this.body = [
-            {v:[20,20,20 + 1 * cs]},
-            {v:[20,20,20 + 2 * cs]},
-            {v:[20,20,20 + 3 * cs]},
-            {v:[20,20,20 + 4 * cs]},
-            {v:[20,20,20 + 5 * cs]},
-            {v:[20,20,20 + 6 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 1 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 2 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 3 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 4 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 5 * cs]},
+            {v:[cs/2, cs/2, cs/2 + 6 * cs]},
         ];
     };
 
     Snake.prototype = {
 
-        move: function(){
+        moveA: function(){
+            
+        },
+
+        moveD: function(){
+            
+        },
+
+        moveS: function(){
+            
+        },
+
+        moveW: function(){
             
         },
     }
