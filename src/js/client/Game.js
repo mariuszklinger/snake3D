@@ -9,7 +9,7 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'],
         var snake = new Snake();
         this.player = new VSnake(this.engine.vgrid.scene, snake);
 
-        this.player.refreshScene();
+        this.player.init();
 
         this.engine.addSnake(this.player);
     };
