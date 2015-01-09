@@ -4,8 +4,6 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
     function(SETTINGS, _){
 
     function VGrid(grid){
-        
-
         this.grid = grid;
         this.init();
         this.addGrid();
@@ -22,7 +20,7 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
             this.renderer = (function(THREE){
                 var renderer = new THREE.WebGLRenderer();
                 renderer.setSize(1450, 800);
-                renderer.setClearColor(0xCCCCCC, 1);
+                renderer.setClearColor(0x000000, 1);
                 document.body.appendChild(renderer.domElement);
             
                 return renderer;
@@ -70,7 +68,7 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
         addGrid: function(vector){
 
             var material = new THREE.LineBasicMaterial({
-                color: 0x000000
+                color: 0xFFFFFF
             });
 
             var X = SETTINGS.GRID_DIMENSIONS[0],
