@@ -41,6 +41,15 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
             this.scene = new THREE.Scene();
 
+            // create a point light
+            var pointLight = new THREE.PointLight(0xFFFFFF);
+
+            pointLight.position.x = 10;
+            pointLight.position.y = 50;
+            pointLight.position.z = 130;
+
+            this.scene.add(pointLight);
+
             this.controls = (function(self){
                 var controls = new THREE.TrackballControls(self.camera);
 
