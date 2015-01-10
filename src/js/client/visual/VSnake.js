@@ -21,14 +21,15 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
         addBlock: function(obj){
 
             var self = this;
+            var cs = SETTINGS.CUBE_SIZE;
 
-            var geometry = new THREE.BoxGeometry(SETTINGS.CUBE_SIZE, SETTINGS.CUBE_SIZE, SETTINGS.CUBE_SIZE);
+            var geometry = new THREE.BoxGeometry(cs, cs, cs);
             var material = new THREE.MeshLambertMaterial({color: self.snake.color});
             var mesh = new THREE.Mesh(geometry, material);
 
-            mesh.position.x = obj.v[0];
-            mesh.position.y = obj.v[1];
-            mesh.position.z = obj.v[2];
+            mesh.position.x = cs/2 + obj.v[0] * cs;
+            mesh.position.y = cs/2 + obj.v[1] * cs;
+            mesh.position.z = cs/2 + obj.v[2] * cs;
             this.scene.add(mesh);    
         },
     
