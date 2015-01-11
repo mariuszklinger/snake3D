@@ -41,14 +41,16 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
             this.scene = new THREE.Scene();
 
-            // create a point light
-            var pointLight = new THREE.PointLight(0xFFFFFF);
+            // light
+            var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+            this.scene.add( hemiLight );
 
-            pointLight.position.x = 10;
-            pointLight.position.y = 50;
-            pointLight.position.z = 130;
-
-            this.scene.add(pointLight);
+            var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+            dirLight.position.set( -1, 0.75, 1 );
+            dirLight.position.multiplyScalar( 50);
+            dirLight.name = "dirlight";
+            dirLight.shadowCameraVisible = true;
+            this.scene.add(dirLight);
 
             this.controls = (function(self){
                 var controls = new THREE.TrackballControls(self.camera);
