@@ -21,6 +21,7 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
                 var renderer = new THREE.WebGLRenderer();
                 renderer.setSize(1450, 800);
                 renderer.setClearColor(0x000000, 1);
+                renderer.shadowMapEnabled = true;
                 document.body.appendChild(renderer.domElement);
             
                 return renderer;
@@ -35,21 +36,22 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
                 );
 
                 camera.position.set(107, 93, 148);
-                camera.lookAt(new THREE.Vector3(107, 93, 148));
+                camera.lookAt(new THREE.Vector3(67, -100, 74));
                 return camera;         
             })(); 
 
             this.scene = new THREE.Scene();
 
             // light
-            var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+            var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.3 );
             this.scene.add( hemiLight );
 
             var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
-            dirLight.position.set( -1, 0.75, 1 );
+            dirLight.position.set( 1, 10, 1 );
             dirLight.position.multiplyScalar( 50);
             dirLight.name = "dirlight";
-            dirLight.shadowCameraVisible = true;
+            // TODO dirLight.castShadow = true;
+            //dirLight.shadowCameraVisible = true;
             this.scene.add(dirLight);
 
             this.controls = (function(self){
@@ -69,6 +71,7 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
                 controls.addEventListener('change', function(){
                     self.renderer.render.call(self);
+                    console.log(self.camera.position);
                 });
 
                 return controls;
@@ -89,9 +92,10 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
             var geometry, line;
 
-            for(var x = 0; x <= X; x += 2){
-                for(var y = 0; y <= Y; y += 2){
-                    for(var z = 0; z <= Z; z += 2){
+            // TODO
+            for(var x = 0; x <= X; x += X){
+                for(var y = 0; y <= Y; y += Y){
+                    for(var z = 0; z <= Z; z += Z){
 
                         geometry = new THREE.Geometry();
                         geometry.vertices.push(new THREE.Vector3(cs * x, cs * y, 0));
@@ -113,6 +117,22 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
                     }
                 }
             }
+
+            // floor
+            var rectLength = X * cs, rectWidth = X * cs;
+            var rectShape = new THREE.Shape();
+            rectShape.moveTo(0,0 );
+            rectShape.lineTo(0, rectWidth);
+            rectShape.lineTo(rectLength, rectWidth);
+            rectShape.lineTo(rectLength, 0);
+            rectShape.lineTo(0, 0 );
+
+            var geometry = new THREE.ShapeGeometry(rectShape);
+            var material = new THREE.MeshBasicMaterial({ color: 0xCCCCCC, side: THREE.DoubleSide });
+
+            var rectMesh = new THREE.Mesh(geometry, material);
+            rectMesh.rotation.set(Math.PI / 2, 0, 0);
+            this.scene.add(rectMesh);  
         },
 
     }

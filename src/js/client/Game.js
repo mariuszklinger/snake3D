@@ -21,7 +21,7 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'],
             switch (code) {
                 // Left key
                 case 65:
-                case 37: 
+                case 37:
                     this.player.moveA();
                     break; 
                 // Up key

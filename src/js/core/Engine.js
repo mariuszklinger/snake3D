@@ -5,12 +5,15 @@ define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid,
     function Engine(){
         this.grid = new Grid();
         this.vgrid = new VGrid();
+
+        this.snake_register = {};
     };
 
     Engine.prototype = {
 
         addSnake: function(snake){
             //TODO: choose not-taken location for new snake
+            this.snake_register[snake.ID] = snake;
             return [1,1,1];
         },
         
