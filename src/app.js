@@ -18,8 +18,10 @@ require.config({
 });
 
 // Start the main app logic.
-define(['client/Game'], function (Game) {
+define(['client/Game', 'underscore'], function (Game, _) {
 
     var g = new Game();
     g.animate();
+
+    window.addEventListener('keydown', _.bind(g.keyPress, g));
 });
