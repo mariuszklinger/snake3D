@@ -7,6 +7,8 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
         this.ID = 1;
         
         this.color = Math.random() * 0xFFFFFF;
+        
+        this.last_direction = false;
 
         this.body = [
             {v: new THREE.Vector3(0, 0, 1)},
@@ -18,9 +20,24 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
         ];
     };
 
-    Snake.prototype = {
+    Snake.prototype.OPPOSITES_MOVES = {
+        'A': 'D',
+        'D': 'A',
+        'S': 'W',
+        'W': 'S',
+        'Q': 'E',
+        'E': 'Q',
+        false: '',
+    }
 
-        move: function(direction){
+    Snake.prototype.move = function(direction){
+
+            if(this.last_direction === this.OPPOSITES_MOVES[direction]){
+                return;
+            }
+
+            this.last_direction = direction;
+
             switch(direction){
                 case 'A':
                     return new THREE.Vector3(-1, 0, 0);
@@ -35,7 +52,6 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
                 case 'E':
                     return new THREE.Vector3(0, 0, -1);
             }
-        },
     }
 
     return Snake;
