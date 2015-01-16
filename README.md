@@ -1,19 +1,14 @@
-Snake3D (_very early draft_)
-----
+Snake3D
+=======
 
 Classic Snake just became 3D and mulitplayer.
 
-###To run: ###
-```
-npm start
-```
-
-and head to http://localhost/src/
-
-###To test: ###
-```
-npm test
-```
+Goals:
+----
+* implementing logic and engine just on top of `three.js`
+* decoupling visual side from "backend"
+* testable API (karma, jasmine)
+* have some fun with 3D blocks
 
 Project conventions:
 ----
@@ -28,3 +23,15 @@ js
 
 * Any visual object (i. e. `VSnake`) requires during initialization appropiate "core" object (i. e. `Snake`), and scene reference. 
 * In the render loop (`Game.animate()`), all objects attached to scene is shown on `VGrid`.
+
+###To run: ###
+```
+npm start
+```
+
+and head to http://localhost/src/
+
+###To test: ###
+```
+npm test
+```
