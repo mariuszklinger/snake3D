@@ -3,6 +3,10 @@ Snake3D
 
 Classic Snake just became 3D and mulitplayer.
 
+Preview:
+----
+![](https://raw.github.com/rinz/snake3D/master/preview.png)
+
 Goals:
 ----
 * implementing logic and engine just on top of `three.js`
