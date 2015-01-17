@@ -9,25 +9,35 @@ define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid,
         this.snake_register = {};
     };
 
-    Engine.prototype = {
+    Engine.prototype.addSnake = function(vsnake){
+            
+            this.vsnake = vsnake;
+            this.snake = vsnake.snake;
+            
+            this.snake.engine = this;
 
-        addSnake: function(snake){
             //TODO: choose not-taken location for new snake
-            this.snake_register[snake.ID] = snake;
-            return [1,1,1];
-        },
+            this.snake_register[this.snake.ID] = this.snake;    
+    }
         
-        moveLeft: function(snakeID){
-        },
+    Engine.prototype.move = function(snakeID, direction){
 
-        moveRight: function(snakeID){
-        },
-        
-        moveUp: function(snakeID){
-        },
-    
-        moveDown: function(snakeID){
-        },
+        switch(direction){
+            case 'A':
+                return new THREE.Vector3(-1, 0, 0);
+            case 'S':
+                return new THREE.Vector3(0, -1, 0);
+            case 'D':
+                return new THREE.Vector3(1, 0, 0);
+            case 'Q':
+                return new THREE.Vector3(0, 0, 1);
+            case 'W':
+                return new THREE.Vector3(0, 1, 0);
+            case 'E':
+                return new THREE.Vector3(0, 0, -1);
+            default:
+                return new THREE.Vector3(0, 0, 0);
+        }
     }
 
     return Engine;
