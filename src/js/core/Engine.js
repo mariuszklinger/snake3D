@@ -9,11 +9,9 @@ define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid,
         this.snake_register = {};
     };
 
-    Engine.prototype.addSnake = function(vsnake){
-            
-            this.vsnake = vsnake;
-            this.snake = vsnake.snake;
-            
+    Engine.prototype.addSnake = function(snake){
+
+            this.snake = snake;
             this.snake.engine = this;
 
             //TODO: choose not-taken location for new snake

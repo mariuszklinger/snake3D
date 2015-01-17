@@ -7,11 +7,9 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'],
         this.engine = new Engine();
 
         var snake = new Snake();
+        this.engine.addSnake(snake);
+
         this.player = new VSnake(this.engine.vgrid.scene, snake);
-
-        this.player.init();
-
-        this.engine.addSnake(this.player);
     };
 
     Game.prototype = {

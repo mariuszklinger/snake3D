@@ -1,36 +1,55 @@
 'use strict';
 
-define(['core/Snake'], function(Snake) {
+define(['core/Snake', 'core/Engine'], function(Snake, Engine) {
 
-    var snake;
+    var snake, engine;
 
     beforeEach(function() {
         snake = new Snake();
+
+        engine = new Engine();
+        engine.addSnake(snake);
     });
 
     describe('Snake...', function(){
 
-        xdescribe('should allow move Snake in all directions', function(){
+        describe('should allow move Snake in all directions', function(){
             
-            it('move Snake LEFT - [-1,0,0]', function(){
-                expect(snake.moveA()).toBe(false);
+            it('move Snake LEFT (A) - [-1,0,0]', function(){
+                expect(snake.move('A').toArray()).toEqual([-1, 0, 0]);
             });
 
-            it('move Snake RIGHT - [1,0,0]', function(){
-                expect(false).toBe(false);
+            it('move Snake RIGHT (D) - [1,0,0]', function(){
+                expect(snake.move('D').toArray()).toEqual([1, 0, 0]);
             });
 
-            it('move Snake UP - [0,1,0]', function(){
-                expect(false).toBe(false);
+            it('move Snake UP (W) - [0,1,0]', function(){
+                expect(snake.move('W').toArray()).toEqual([0, 1, 0]);
             });
 
-            it('move Snake DOWN -[0,-1,0]', function(){
-                expect(false).toBe(false);
+            it('move Snake DOWN (S) - [0,-1,0]', function(){
+                expect(snake.move('S').toArray()).toEqual([0, -1, 0]);
+            });
+
+            it('move Snake BEYOND (E) - [0,-1,0]', function(){
+                expect(snake.move('E').toArray()).toEqual([0, 0, -1]);
+            });
+
+            it('move Snake FORWARD (Q) - [0,0,0]', function(){
+                expect(snake.move('Q').toArray()).toEqual([0, 0, 1]);
             });
         })
 
-        it('should destroy Snake after collision', function(){
-            expect(false).toBe(false);
+        it('should disallow to move back', function(){
+            snake.move('Q')
+            expect(snake.move('E')).toBeFalsy(false);
+
+            snake.move('A')
+            expect(snake.move('D')).toBeFalsy(false);
+        });
+
+        xit('should destroy Snake after collision', function(){
+            expect(false).toBeFalsy(false);
         });
 
     });

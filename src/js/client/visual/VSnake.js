@@ -6,6 +6,8 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
         this.scene = scene;
         this.snake = snake;
         this.body = [];
+
+        this.init();
     };
 
     VSnake.prototype = {
