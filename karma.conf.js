@@ -1,90 +1,83 @@
 module.exports = function(config) {
-  config.set({
 
-    // base path, that will be used to resolve files and exclude
-    basePath: '',
+    var configuration = {
 
+        // base path, that will be used to resolve files and exclude
+        basePath: '',
 
-    // frameworks to use
-    frameworks: ['jasmine', 'requirejs'],
+        // frameworks to use
+        frameworks: ['jasmine', 'requirejs'],
 
+        // list of files / patterns to load in the browser
+        files: [
+            {pattern: 'lib/**/*.js', included: false},
+            {pattern: 'bower_components/**/*.js', included: false},
+            {pattern: 'src/js/**/*.js', included: false},
+            {pattern: 'test/**/*-Spec.js', included: false},
 
-    // list of files / patterns to load in the browser
-    files: [
-        {pattern: 'lib/**/*.js', included: false},
-        {pattern: 'bower_components/**/*.js', included: false},
-        {pattern: 'src/js/**/*.js', included: false},
-        {pattern: 'test/**/*-Spec.js', included: false},
+            'test/test-main.js',
+        ],
 
-        'test/test-main.js',
-    ],
+        // list of files to exclude
+        exclude: [
+            'src/app.js'
+        ],
 
+        // test results reporter to use
+        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+        reporters: ['spec'],
 
-    // list of files to exclude
-    exclude: [
-        'src/app.js'
-    ],
+        plugins : [
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-jasmine',
+            'karma-requirejs',
+            'karma-junit-reporter',
+            'karma-spec-reporter'
+        ],
 
+        // web server port
+        port: 9876,
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['spec'],
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
 
-    plugins : [
-        'karma-chrome-launcher',
-        'karma-firefox-launcher',
-        'karma-jasmine',
-        'karma-requirejs',
-        'karma-junit-reporter',
-        'karma-spec-reporter'
-    ],
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
 
-    // web server port
-    port: 9876,
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
 
+        // Start these browsers, currently available:
+        // - Chrome
+        // - ChromeCanary
+        // - Firefox
+        // - Opera
+        // - Safari (only Mac)
+        // - PhantomJS
+        // - IE (only Windows)
+        browsers: ['Chrome'],
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
-    // Start these browsers, currently available:
-    // - Chrome
-    // - ChromeCanary
-    // - Firefox
-    // - Opera
-    // - Safari (only Mac)
-    // - PhantomJS
-    // - IE (only Windows)
-    browsers: ['Chrome'],
-
-    customLaunchers: {
-        Chrome_travis_ci: {
+        customLaunchers: {
+            Chrome_travis_ci: {
                 base: 'Chrome',
                 flags: ['--no-sandbox']
             }
         },
+
+        // If browser does not capture in given timeout [ms], kill it
+        captureTimeout: 60000,
+
+        // Continuous Integration mode
+        // if true, it capture browsers, run tests and exit
+        singleRun: false
     };
 
     if(process.env.TRAVIS){
         configuration.browsers = ['Chrome_travis_ci'];
     }
 
-    // If browser does not capture in given timeout [ms], kill it
-    captureTimeout: 60000,
-
-
-    // Continuous Integration mode
-    // if true, it capture browsers, run tests and exit
-    singleRun: false
-  });
+    config.set(configuration);
 };
 
