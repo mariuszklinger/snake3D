@@ -1,4 +1,4 @@
-Snake3D
+Snake3D [![Build Status](https://travis-ci.org/rinz/snake3D.svg)](https://travis-ci.org/rinz/snake3D)
 =======
 
 Classic Snake just became 3D and mulitplayer.
