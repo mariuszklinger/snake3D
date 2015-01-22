@@ -66,6 +66,17 @@ module.exports = function(config) {
     // - IE (only Windows)
     browsers: ['Chrome'],
 
+    customLaunchers: {
+        Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
+    };
+
+    if(process.env.TRAVIS){
+        configuration.browsers = ['Chrome_travis_ci'];
+    }
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
@@ -76,3 +87,4 @@ module.exports = function(config) {
     singleRun: false
   });
 };
+
