@@ -71,7 +71,6 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
                 controls.addEventListener('change', function(){
                     self.renderer.render.call(self);
-                    console.log(self.camera.position);
                 });
 
                 return controls;
@@ -133,6 +132,10 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
             var rectMesh = new THREE.Mesh(geometry, material);
             rectMesh.rotation.set(Math.PI / 2, 0, 0);
             this.scene.add(rectMesh);  
+        },
+
+        render: function(){
+            this.renderer.render(this.scene, this.camera);
         },
 
     }

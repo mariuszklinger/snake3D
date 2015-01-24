@@ -51,7 +51,7 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'client/visual/VGri
         },
 
         render: function(){
-            this.vgrid.renderer.render(this.vgrid.scene, this.vgrid.camera);
+            this.vgrid.render();
         },
 
         animate: function(){
