@@ -1,8 +1,8 @@
 {
   "name": "Snake3D",
-  "description": "A starter project for AngularJS",
+  "description": "Snake3D",
   "version": "0.0.1",
-  "homepage": "https://github.com/angular/angular-seed",
+  "homepage": "https://mariuszklinger.pl",
   "license": "MIT",
   "private": true,
   "dependencies": {

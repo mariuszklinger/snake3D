@@ -1,15 +1,17 @@
 'use strict';
 
-define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'], 
-    function(Engine, Snake, VSnake, SETTINGS){
+define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'client/visual/VGrid', 'core/SETTINGS'], 
+    function(Engine, Snake, VSnake, VGrid, SETTINGS){
 
     function Game(){
         this.engine = new Engine();
 
+        this.vgrid = new VGrid();
+
         var snake = new Snake();
         this.engine.addSnake(snake);
 
-        this.player = new VSnake(this.engine.vgrid.scene, snake);
+        this.player = new VSnake(this.vgrid.scene, snake);
     };
 
     Game.prototype = {
@@ -49,7 +51,7 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'],
         },
 
         render: function(){
-            this.engine.vgrid.renderer.render(this.engine.vgrid.scene, this.engine.vgrid.camera);
+            this.vgrid.renderer.render(this.vgrid.scene, this.vgrid.camera);
         },
 
         animate: function(){
@@ -58,7 +60,7 @@ define(['core/Engine', 'core/Snake', 'client/visual/VSnake', 'core/SETTINGS'],
 
             var _animate = function(){
                 requestAnimationFrame(_animate);
-                self.engine.vgrid.controls.update();
+                self.vgrid.controls.update();
                 self.render();
             }
 

@@ -20,7 +20,7 @@ module.exports = function(config) {
 
         // list of files to exclude
         exclude: [
-            'src/app.js'
+            'src/app.js',
         ],
 
         // test results reporter to use
@@ -33,7 +33,8 @@ module.exports = function(config) {
             'karma-jasmine',
             'karma-requirejs',
             'karma-junit-reporter',
-            'karma-spec-reporter'
+            'karma-spec-reporter',
+            'karma-phantomjs-launcher'
         ],
 
         // web server port
@@ -57,12 +58,22 @@ module.exports = function(config) {
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
-        browsers: ['Chrome'],
+        browsers: ['Chrome', 'PhantomJS'],
 
         customLaunchers: {
             Chrome_travis_ci: {
                 base: 'Chrome',
                 flags: ['--no-sandbox']
+            },
+
+            PhantomJS_custom: {
+                base: 'PhantomJS',
+                options: {
+                    windowName: 'my-window',
+                    settings: {
+                        webSecurityEnabled: false
+                    }
+                },
             }
         },
 
@@ -80,4 +91,3 @@ module.exports = function(config) {
 
     config.set(configuration);
 };
-

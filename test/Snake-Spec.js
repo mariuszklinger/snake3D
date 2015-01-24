@@ -16,27 +16,27 @@ define(['core/Snake', 'core/Engine'], function(Snake, Engine) {
         describe('should allow move Snake in all directions', function(){
             
             it('move Snake LEFT (A) - [-1,0,0]', function(){
-                expect(snake.move('A').toArray()).toEqual([-1, 0, 0]);
+                expect(snake.move('A')).toEqual([-1, 0, 0]);
             });
 
             it('move Snake RIGHT (D) - [1,0,0]', function(){
-                expect(snake.move('D').toArray()).toEqual([1, 0, 0]);
+                expect(snake.move('D')).toEqual([1, 0, 0]);
             });
 
             it('move Snake UP (W) - [0,1,0]', function(){
-                expect(snake.move('W').toArray()).toEqual([0, 1, 0]);
+                expect(snake.move('W')).toEqual([0, 1, 0]);
             });
 
             it('move Snake DOWN (S) - [0,-1,0]', function(){
-                expect(snake.move('S').toArray()).toEqual([0, -1, 0]);
+                expect(snake.move('S')).toEqual([0, -1, 0]);
             });
 
             it('move Snake BEYOND (E) - [0,-1,0]', function(){
-                expect(snake.move('E').toArray()).toEqual([0, 0, -1]);
+                expect(snake.move('E')).toEqual([0, 0, -1]);
             });
 
             it('move Snake FORWARD (Q) - [0,0,0]', function(){
-                expect(snake.move('Q').toArray()).toEqual([0, 0, 1]);
+                expect(snake.move('Q')).toEqual([0, 0, 1]);
             });
         })
 

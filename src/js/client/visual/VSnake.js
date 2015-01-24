@@ -17,7 +17,8 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
             var self = this;
 
             _.each(this.snake.body, function(obj){
-                self.addBlock(obj);  
+                var v = new THREE.Vector3();
+                self.addBlock(v.fromArray(obj.v));  
             }, this);
         },
         
@@ -30,16 +31,12 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
             var material = new THREE.MeshLambertMaterial({color: self.snake.color});
             var mesh = new THREE.Mesh(geometry, material);
             
-            mesh.position.copy(block.v);
+            mesh.position.copy(block);
             mesh.position.multiplyScalar(cs);
             mesh.position.addScalar(cs/2);
 
             this.scene.add(mesh);
             this.body.push(mesh);
-        },
-    
-        refreshScene: function(){
-
         },
 
         move: function(direction){
@@ -51,7 +48,9 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
             prev_position.copy(head.position);
 
             // moving HEAD
-            var shift_vector = this.snake.move(direction);
+            var shift_vector = new THREE.Vector3();
+            shift_vector.fromArray(this.snake.move(direction));
+            
             shift_vector.multiplyScalar(cs);
             head.position.add(shift_vector);
 

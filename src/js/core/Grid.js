@@ -1,6 +1,6 @@
 'use strict';
 
-define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'], 
+define(['core/SETTINGS', 'underscore'], 
     function(SETTINGS, _){
 
     function Grid(){
@@ -9,7 +9,7 @@ define(['core/SETTINGS', 'underscore', 'THREE.TrackballControls'],
 
     Grid.prototype = {
 
-        board: [],        
+        board: [],
 
         init: function(){
 

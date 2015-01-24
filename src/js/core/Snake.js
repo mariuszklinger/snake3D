@@ -12,12 +12,12 @@ define(['underscore', 'core/SETTINGS'], function(_, SETTINGS){
         this.engine = undefined;
 
         this.body = [
-            {v: new THREE.Vector3(0, 0, 1)},
-            {v: new THREE.Vector3(0, 0, 2)},
-            {v: new THREE.Vector3(0, 0, 3)},
-            {v: new THREE.Vector3(0, 0, 4)},
-            {v: new THREE.Vector3(0, 0, 5)},
-            {v: new THREE.Vector3(0, 0, 6)},
+            {v: [0, 0, 1]},
+            {v: [0, 0, 2]},
+            {v: [0, 0, 3]},
+            {v: [0, 0, 4]},
+            {v: [0, 0, 5]},
+            {v: [0, 0, 6]},
         ];
     };
 

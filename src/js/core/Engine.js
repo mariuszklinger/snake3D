@@ -1,11 +1,9 @@
 'use strict';
 
-define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid, Snake){
+define(['core/Grid', 'core/Snake'], function(Grid, Snake){
 
     function Engine(){
         this.grid = new Grid();
-        this.vgrid = new VGrid();
-
         this.snake_register = {};
     };
 
@@ -22,19 +20,19 @@ define(['core/Grid', 'client/visual/VGrid', 'core/Snake'], function(Grid, VGrid,
 
         switch(direction){
             case 'A':
-                return new THREE.Vector3(-1, 0, 0);
+                return [-1, 0, 0];
             case 'S':
-                return new THREE.Vector3(0, -1, 0);
+                return [0, -1, 0];
             case 'D':
-                return new THREE.Vector3(1, 0, 0);
+                return [1, 0, 0];
             case 'Q':
-                return new THREE.Vector3(0, 0, 1);
+                return [0, 0, 1];
             case 'W':
-                return new THREE.Vector3(0, 1, 0);
+                return [0, 1, 0];
             case 'E':
-                return new THREE.Vector3(0, 0, -1);
+                return [0, 0, -1];
             default:
-                return new THREE.Vector3(0, 0, 0);
+                return [0, 0, 0];
         }
     }
 
