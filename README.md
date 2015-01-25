@@ -1,11 +1,11 @@
-Snake3D [![Build Status](https://travis-ci.org/rinz/snake3D.svg)](https://travis-ci.org/rinz/snake3D)
+Snake3D [![Build Status](https://travis-ci.org/mariuszklinger/snake3D.svg)](https://travis-ci.org/mariuszklinger/snake3D)
 =======
 
 Classic Snake just became 3D and mulitplayer.
 
 Preview:
 ----
-![](https://raw.github.com/rinz/snake3D/master/preview.png)
+![](https://raw.github.com/mariuszklinger/snake3D/master/preview.png)
 
 Goals:
 ----
